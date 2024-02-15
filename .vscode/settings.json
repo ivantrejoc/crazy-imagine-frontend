@@ -1,0 +1,7 @@
+{
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "eslint.codeActionsOnSave.rules": null,
+    "reactSnippets.settings.importReactOnTop": true
+}
