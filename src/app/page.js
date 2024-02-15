@@ -15,14 +15,18 @@ export default async function Home() {
 
   console.log("ESTOS SON LOS VIDEOS DE DATA", videos)
   return (
-    <main className="flex flex-col items-center h-fit w-full">
+    <div>
       <h1>Youtube CLONE</h1>
+      <main className="grid lg:grid-cols-3 lg:grid-rows-3 lg:gap-6 md:grid-cols-2 my-6 p-6 md:grid-rows-4 md:gap-2 place-items-center">
+      
 
-      <section className="grid lg:grid-cols-3 lg:grid-rows-3 lg:gap-6 md:grid-cols-2 my-6 p-6 md:grid-rows-4 md:gap-2 place-items-center">
+      
         {videos.map((product) => (
           <VideoCard key={product.id} data={product} />
         ))}
-      </section>
+     
     </main>
+    </div>
+    
   );
 }
