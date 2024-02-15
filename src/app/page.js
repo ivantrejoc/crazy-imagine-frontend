@@ -13,7 +13,7 @@ const getVideos = async () => {
 export default function Home() {
   const [videos, setVideos] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
+  const [pageSize, setPageSize] = useState(9);
 
   useEffect(() => {
     async function fetchVideos() {

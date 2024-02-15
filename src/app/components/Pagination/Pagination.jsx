@@ -18,7 +18,7 @@ const Pagination = ({pageSize, videos, currentPage, pagination}) => {
       <ul className="flex items-center -space-x-px h-10 text-base">
         <li>
           <button
-            className="relative block rounded bg-transparent px-3 py-1.5 text-base text-neutral-600 transition-all duration-300 hover:bg-neutral-200 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
+            className="relative block rounded bg-transparent px-3 py-1.5 text-base text-neutral-600 transition-all duration-300 hover:bg-red-600 hover:text-white dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
             onClick={() => pagination(currentPage - 1)}
             disabled={currentPage === 1}
           >
@@ -31,7 +31,7 @@ const Pagination = ({pageSize, videos, currentPage, pagination}) => {
             <button
               className={`relative block rounded bg-transparent px-3 py-1.5 text-base text-neutral-600 transition-all duration-300 hover:bg-neutral-200  dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white ${
                 currentPage === number
-                  ? " text-gray-100 bg-gray-400 focus:bg-gray-300 focus-within:bg-gray-300 dark:focus:bg-gray-100 dark:focus-within:bg-gray-100"
+                  ? " text-gray-100 bg-gray-400 focus:bg-red-600 focus:text-white focus-within:bg-red-500 dark:focus:bg-gray-100 dark:focus-within:bg-gray-100"
                   : ""
               }`}
               key={number}
@@ -43,7 +43,7 @@ const Pagination = ({pageSize, videos, currentPage, pagination}) => {
         ))}
         <li>
           <button
-            className="relative block rounded bg-transparent px-3 py-1.5 text-base text-neutral-600 transition-all duration-300 hover:bg-neutral-200 dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
+            className="relative block rounded bg-transparent px-3 py-1.5 text-base text-neutral-600 transition-all duration-300 hover:bg-red-600 hover:text-white dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white"
             onClick={() => pagination(currentPage + 1)}
             disabled={currentPage === pageNumbers.length}
           >
