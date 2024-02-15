@@ -2,63 +2,109 @@ import { FaYoutube } from "react-icons/fa";
 
 const RegisterForm = () => {
   return (
-    <div className="overflow-hidden flex items-center justify-center mt-24">
-      <div className="bg-gray-300 lg:w-5/12 md:w-6/12 w-10/12 rounded-md shadow-3xl">
-        <div className="bg-gray-400 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full p-2 md:p-8">
-          <FaYoutube className="w-16 h-16" />
-        </div>
-        <form className="p-12 md:p-20">
-        <div className="flex items-center text-lg mb-6 md:mb-8">
-            <svg className="absolute ml-3" width="24" viewBox="0 0 24 24">
-              <path d="M20.822 18.096c-3.439-.794-6.64-1.49-5.09-4.418 4.72-8.912 1.251-13.678-3.732-13.678-5.082 0-8.464 4.949-3.732 13.678 1.597 2.945-1.725 3.641-5.09 4.418-3.073.71-3.188 2.236-3.178 4.904l.004 1h23.99l.004-.969c.012-2.688-.092-4.222-3.176-4.935z" />
-            </svg>
-            <input
-              type="text"
-              id="name"
-              className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full rounded-md"
-              placeholder="name"
-            />
+    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+        <FaYoutube className="w-16 h-16 m-auto" />
+        <h2 className="mt-2 text-center text-2xl font-bold leading-9 tracking-tight to-blue-500">
+          Crea un usuario para continuar
+        </h2>
+      </div>
+
+      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <form className="space-y-6" action="#" method="POST">
+        <div>
+            <label
+              for="name"
+              className="block text-sm font-medium leading-6 text-balance"
+            >
+              Nombre
+            </label>
+            <div className="mt-2">
+              <input
+                id="name"
+                name="name"
+                type="text"
+                autocomplete="name"
+                required
+                className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-cyan-600 shadow-sm ring-1 ring-inset ring-red-500 focus:ring-2 focus:ring-inset focus:ring-balck sm:text-sm sm:leading-6"
+              />
+            </div>
           </div>
-          <div className="flex items-center text-lg mb-6 md:mb-8">
-            <svg className="absolute ml-3" width="24" viewBox="0 0 24 24">
-              <path d="M20.822 18.096c-3.439-.794-6.64-1.49-5.09-4.418 4.72-8.912 1.251-13.678-3.732-13.678-5.082 0-8.464 4.949-3.732 13.678 1.597 2.945-1.725 3.641-5.09 4.418-3.073.71-3.188 2.236-3.178 4.904l.004 1h23.99l.004-.969c.012-2.688-.092-4.222-3.176-4.935z" />
-            </svg>
-            <input
-              type="email"
-              id="email"
-              className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full rounded-md"
-              placeholder="email"
-            />
+          <div>
+            <label
+              for="email"
+              className="block text-sm font-medium leading-6 text-balance"
+            >
+              Email
+            </label>
+            <div className="mt-2">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-cyan-600 shadow-sm ring-1 ring-inset ring-red-500 focus:ring-2 focus:ring-inset focus:ring-balck sm:text-sm sm:leading-6"
+              />
+            </div>
           </div>
-          <div className="flex items-center text-lg mb-6 md:mb-8">
-            <svg className="absolute ml-3" viewBox="0 0 24 24" width="24">
-              <path d="m18.75 9h-.75v-3c0-3.309-2.691-6-6-6s-6 2.691-6 6v3h-.75c-1.24 0-2.25 1.009-2.25 2.25v10.5c0 1.241 1.01 2.25 2.25 2.25h13.5c1.24 0 2.25-1.009 2.25-2.25v-10.5c0-1.241-1.01-2.25-2.25-2.25zm-10.75-3c0-2.206 1.794-4 4-4s4 1.794 4 4v3h-8zm5 10.722v2.278c0 .552-.447 1-1 1s-1-.448-1-1v-2.278c-.595-.347-1-.985-1-1.722 0-1.103.897-2 2-2s2 .897 2 2c0 .737-.405 1.375-1 1.722z" />
-            </svg>
-            <input
-              type="password"
-              id="password"
-              className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full rounded-md"
-              placeholder="Password"
-            />
+
+          <div>
+            <div className="flex items-center justify-between">
+              <label
+                for="password"
+                className="block text-sm font-medium leading-6 text-black"
+              >
+                Password
+              </label>
+              <div className="text-sm"></div>
+            </div>
+            <div className="mt-2">
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                required
+                className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-red-500 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
+              />
+            </div>
           </div>
-          <div className="flex items-center text-lg mb-6 md:mb-8">
-            <svg className="absolute ml-3" viewBox="0 0 24 24" width="24">
-              <path d="m18.75 9h-.75v-3c0-3.309-2.691-6-6-6s-6 2.691-6 6v3h-.75c-1.24 0-2.25 1.009-2.25 2.25v10.5c0 1.241 1.01 2.25 2.25 2.25h13.5c1.24 0 2.25-1.009 2.25-2.25v-10.5c0-1.241-1.01-2.25-2.25-2.25zm-10.75-3c0-2.206 1.794-4 4-4s4 1.794 4 4v3h-8zm5 10.722v2.278c0 .552-.447 1-1 1s-1-.448-1-1v-2.278c-.595-.347-1-.985-1-1.722 0-1.103.897-2 2-2s2 .897 2 2c0 .737-.405 1.375-1 1.722z" />
-            </svg>
-            <input
-              type="password"
-              id="confirm password"
-              className="bg-gray-200 pl-12 py-2 md:py-4 focus:outline-none w-full rounded-md"
-              placeholder="Confirm password"
-            />
+
+          <div>
+            <div className="flex items-center justify-between">
+              <label
+                for="password"
+                className="block text-sm font-medium leading-6 text-black"
+              >
+                Confirma el Password
+              </label>
+              <div className="text-sm"></div>
+            </div>
+            <div className="mt-2">
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                required
+                className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-red-500 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
+              />
+            </div>
           </div>
-          <button className="bg-gradient-to-b from-gray-700 to-gray-900 font-medium p-2 md:p-4 text-white uppercase w-full rounded-md">
-            Registrate
-          </button>
+
+          <div>
+            <button
+              type="submit"
+              className="flex w-full justify-center rounded-md bg-red-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
+            >
+              Registrar
+            </button>
+          </div>
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default RegisterForm
+export default RegisterForm;
