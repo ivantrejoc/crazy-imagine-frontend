@@ -14,7 +14,7 @@ const Pagination = ({pageSize, videos, currentPage, pagination}) => {
 //   console.log("Esta es la página actual: ", currentPage);
 
   return (
-    <nav className="flex flex-row items-center -space-x-px h-10 mb-8 mt-6">
+    <nav className="bg-white rounded-lg shadow-lg px-2 flex flex-row items-center -space-x-px h-10 mb-8 mt-6">
       <ul className="flex items-center -space-x-px h-10 text-base">
         <li>
           <button

@@ -36,13 +36,6 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center h-fit">
-      <Pagination
-        pageSize={pageSize}
-        videos={videos}
-        currentPage={currentPage}
-        pagination={pagination}
-      />
-
       {loading ? (
         <p>Cargando Videos...</p>
       ) : (
@@ -58,6 +51,12 @@ export default function Home() {
           ))}
         </section>
       )}
+      <Pagination
+        pageSize={pageSize}
+        videos={videos}
+        currentPage={currentPage}
+        pagination={pagination}
+      />
     </main>
   );
 }

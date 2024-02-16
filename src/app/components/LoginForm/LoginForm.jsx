@@ -11,21 +11,21 @@ const LoginForm = () => {
   <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
     <form className="space-y-6" action="#" method="POST">
       <div>
-        <label for="email" className="block text-sm font-medium leading-6 text-balance">Email</label>
+        <label className="block text-sm font-medium leading-6 text-balance">Email</label>
         <div className="mt-2">
-          <input id="email" name="email" type="email" autocomplete="email" required className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-cyan-600 shadow-sm ring-1 ring-inset ring-red-500 focus:ring-2 focus:ring-inset focus:ring-balck sm:text-sm sm:leading-6"/>
+          <input id="email" name="email" type="email" required className="block w-full rounded-md border-0 bg-white/5 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-red-500 focus:ring-2 focus:ring-inset focus:ring-balck sm:text-sm sm:leading-6"/>
         </div>
       </div>
 
       <div>
         <div className="flex items-center justify-between">
-          <label for="password" className="block text-sm font-medium leading-6 text-black">Password</label>
+          <label className="block text-sm font-medium leading-6 text-black">Password</label>
           <div className="text-sm">
             <a href="#" className="font-semibold text-red-500 hover:text-red-400">Forgot password?</a>
           </div>
         </div>
         <div className="mt-2">
-          <input id="password" name="password" type="password" autocomplete="current-password" required className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-red-500 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6" />
+          <input id="password" name="password" type="password" required className="block w-full rounded-md border-0 bg-white/5 py-1.5 px-2 text-gray-800 shadow-sm ring-1 ring-inset ring-red-500 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6" />
         </div>
       </div>
 
