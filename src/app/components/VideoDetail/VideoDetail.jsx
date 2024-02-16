@@ -1,22 +1,21 @@
-import { LiaCommentSolid } from "react-icons/lia";
 import { GrLike } from "react-icons/gr";
 import { GrDislike } from "react-icons/gr";
 
-const VideoDetail = () => {
+const VideoDetail = ({id, link, title, likes, unlikes}) => {
+  
   return (
     <div className="w-3/4 border inline-flex border-gray-300 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-full lg:max-w-7xl mx-auto px-4 sm:px-2 lg:px-8 my-12 justify-center">
       <div className="w-full p-2">
         <div>
           <iframe
             className="w-full h-96 max-h-90 mt-2"
-            src="https://www.youtube.com/embed/SHbXK1M6I30?si=LBzkqFuwG679k7gQ"
+            src={link}
             title="YouTube video player"
-            frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
-          <h2 className="my-2 lg:leading-tight lg:tracking-tight font-bold text-gray-800 text-xs lg:text-xl">
-            Video Title
+          <h2 className="my-2 lg:leading-tight lg:tracking-tight font-bold text-gray-800 text-xs lg:text-lg">
+            {title}
           </h2>
         </div>
 
@@ -47,21 +46,21 @@ const VideoDetail = () => {
             </div>
           </form>
 
-          <div className="flex px-3 py-8 justify-between">
-            <div className="flex space-x-2 gap-3">
-              <div className="flex space-x-1 items-center">
-                <button>
-                  <GrLike classNameName="w-3 h-3" />
+          <div className="flex px-4 py-12 justify-between">
+            <div className="flex space-x-2 gap-5">
+              <div className="flex space-x-1 items-center gap-1">
+                <button className="w-8 h-8 hover:transform">
+                  <GrLike className="w-full h-full" />
                 </button>
 
-                <span>35</span>
+                <span className="text-lg font-medium">{likes}</span>
               </div>
-              <div className="flex space-x-1 items-center w-14">
-                <button>
-                  <GrDislike classNameName="w-full h-full" />
+              <div className="flex space-x-1 items-center w-14 gap-1">
+                <button className="w-8 h-8">
+                  <GrDislike className="w-full h-full" />
                 </button>
 
-                <span>50</span>
+                <span className="text-lg font-medium">{unlikes}</span>
               </div>
             </div>
           </div>
