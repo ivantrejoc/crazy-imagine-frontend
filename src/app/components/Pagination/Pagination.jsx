@@ -29,7 +29,7 @@ const Pagination = ({pageSize, videos, currentPage, pagination}) => {
         {pageNumbers?.map((number) => (
           <li key={number}>
             <button
-              className={`relative block rounded bg-transparent px-3 py-1.5 text-base text-neutral-600 transition-all duration-300 hover:bg-neutral-200  dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white ${
+              className={`relative block rounded bg-transparent px-3 py-1.5 text-base text-neutral-600 transition-all duration-300 hover:bg-red-400 hover:text-white  dark:text-white dark:hover:bg-neutral-700 dark:hover:text-white ${
                 currentPage === number
                   ? " text-gray-100 bg-gray-400 focus:bg-red-600 focus:text-white focus-within:bg-red-500 dark:focus:bg-gray-100 dark:focus-within:bg-gray-100"
                   : ""

@@ -12,13 +12,15 @@ const getVideos = async () => {
 
 export default function Home() {
   const [videos, setVideos] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(9);
 
   useEffect(() => {
     async function fetchVideos() {
-      const data = await getVideos();
-      setVideos(data);
+      const videosData = await getVideos();
+      setVideos(videosData);
+      setLoading(false);
     }
     fetchVideos();
   }, []);
@@ -40,11 +42,22 @@ export default function Home() {
         currentPage={currentPage}
         pagination={pagination}
       />
-      <section className="grid lg:grid-cols-3 lg:grid-rows-3 lg:gap-6 md:grid-cols-2 my-6 p-6 md:grid-rows-4 md:gap-2 place-items-center">
-        {currentVideos.map((video) => (
-          <VideoCard key={video.id} data={video} />
-        ))}
-      </section>
+
+      {loading ? (
+        <p>Cargando Videos...</p>
+      ) : (
+        <section className="grid lg:grid-cols-3 lg:grid-rows-3 lg:gap-6 md:grid-cols-2 my-6 p-6 md:grid-rows-4 md:gap-2 place-items-center">
+          {currentVideos.map((video) => (
+            <VideoCard
+              key={video.id}
+              title={video.title}
+              link={video.link}
+              likes={video.like_count}
+              unlikes={video.unlike_count}
+            />
+          ))}
+        </section>
+      )}
     </main>
   );
 }
