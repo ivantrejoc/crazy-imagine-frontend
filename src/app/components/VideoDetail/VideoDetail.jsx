@@ -1,11 +1,12 @@
 import { GrLike } from "react-icons/gr";
 import { GrDislike } from "react-icons/gr";
+import { Comments } from "../Comments";
 
-const VideoDetail = ({id, link, title, likes, unlikes}) => {
-  
+const VideoDetail = ({ id, link, title, likes, unlikes, comments }) => {
+  console.log("DATOS DE COMMENTS EN VideDetail: ", comments);
   return (
-    <div className="w-3/4 border inline-flex border-gray-300 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-full lg:max-w-7xl mx-auto px-4 sm:px-2 lg:px-8 my-12 justify-center">
-      <div className="w-full p-2">
+    <div className="w-3/4 h-fit border inline-flex border-gray-300 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 lg:max-w-7xl mx-auto px-4 sm:px-2 lg:px-8 my-12 justify-center">
+      <div className="w-full h-fit p-2">
         <div>
           <iframe
             className="w-full h-96 max-h-90 mt-2"
@@ -19,17 +20,17 @@ const VideoDetail = ({id, link, title, likes, unlikes}) => {
           </h2>
         </div>
 
-        <div className="flex items-start justify-start mt-12  mb-4 w-full">
+        <div className="flex items-start justify-start mt-12 mb-1 w-full">
           <form className="w-1/3 rounded-lg px-4 pt-2">
             <div className="flex flex-wrap -mx-3 mb-6">
               <h2 className="px-4 pt-3 pb-2 text-gray-800 text-md font-semibold">
-                Add a new comment
+                Deja un comentario
               </h2>
               <div className="w-full md:w-full px-3 mb-2 mt-2">
                 <textarea
                   className="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-normal placeholder-gray-700 focus:outline-none focus:bg-white"
                   name="body"
-                  placeholder="Type Your Comment"
+                  placeholder="Escribe tu comentario..."
                   required
                 ></textarea>
               </div>
@@ -39,7 +40,7 @@ const VideoDetail = ({id, link, title, likes, unlikes}) => {
                     type="submit"
                     className="bg-red-600 text-white font-normal py-1 px-4 border rounded-lg tracking-wide mr-1 hover:bg-red-700"
                   >
-                    Post Comment
+                    Enviar comentario
                   </button>
                 </div>
               </div>
@@ -64,6 +65,18 @@ const VideoDetail = ({id, link, title, likes, unlikes}) => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="flex flex-col w-3/4 items-start justify-start ml-4 space-x-2">
+          <h2 className="px-4 pt-3 pb-2 text-gray-800 text-md font-semibold">
+            Comentarios
+          </h2>
+          {comments.map((comment) => (
+            <Comments
+              key={comment.name_user}
+              name={comment.name_user}
+              comment={comment.comment}
+            />
+          ))}
         </div>
       </div>
     </div>

@@ -21,6 +21,7 @@ const VideoById = async (id) => {
         title={video.title}
         likes={video.like_count}
         unlikes={video.unlike_count}
+        comments={video.Comments}
       />
     </section>
   );
