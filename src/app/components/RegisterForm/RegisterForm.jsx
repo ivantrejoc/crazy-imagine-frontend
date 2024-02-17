@@ -1,6 +1,39 @@
+"use client";
 import { FaYoutube } from "react-icons/fa";
-
+import { useForm } from "react-hook-form";
 const RegisterForm = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm();
+
+  const onSubmit = async (data, event) => {
+    event.preventDefault();
+
+    const URL = "http://localhost:3001/ivan-trejo-challenge/user/";
+
+    const postUser = await fetch(URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: data.name,
+        email: data.email,
+        password: data.password
+      })
+    });
+
+    if (postUser?.error) {
+      console.log(postUser.error);
+      alert(errors);
+    }else{
+      reset();
+    }
+  };
+
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -11,12 +44,9 @@ const RegisterForm = () => {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6" action="#" method="POST">
-        <div>
-            <label
-              for="name"
-              className="block text-sm font-medium leading-6 text-balance"
-            >
+        <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+          <div>
+            <label className="block text-sm font-medium leading-6 text-balance">
               Nombre
             </label>
             <div className="mt-2">
@@ -24,17 +54,14 @@ const RegisterForm = () => {
                 id="name"
                 name="name"
                 type="text"
-                autocomplete="name"
                 required
-                className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-cyan-600 shadow-sm ring-1 ring-inset ring-red-500 focus:ring-2 focus:ring-inset focus:ring-balck sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-gray-900 p-2 shadow-sm ring-1 ring-inset ring-red-500 focus:ring-2 focus:ring-inset focus:ring-balck sm:text-sm sm:leading-6"
+                {...register("name")}
               />
             </div>
           </div>
           <div>
-            <label
-              for="email"
-              className="block text-sm font-medium leading-6 text-balance"
-            >
+            <label className="block text-sm font-medium leading-6 text-balance">
               Email
             </label>
             <div className="mt-2">
@@ -42,19 +69,16 @@ const RegisterForm = () => {
                 id="email"
                 name="email"
                 type="email"
-                autocomplete="email"
                 required
-                className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-cyan-600 shadow-sm ring-1 ring-inset ring-red-500 focus:ring-2 focus:ring-inset focus:ring-balck sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-gray-900 p-2 shadow-sm ring-1 ring-inset ring-red-500 focus:ring-2 focus:ring-inset focus:ring-balck sm:text-sm sm:leading-6"
+                {...register("email")}
               />
             </div>
           </div>
 
           <div>
             <div className="flex items-center justify-between">
-              <label
-                for="password"
-                className="block text-sm font-medium leading-6 text-black"
-              >
+              <label className="block text-sm font-medium leading-6 text-black">
                 Password
               </label>
               <div className="text-sm"></div>
@@ -64,31 +88,28 @@ const RegisterForm = () => {
                 id="password"
                 name="password"
                 type="password"
-                autocomplete="current-password"
                 required
-                className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-red-500 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 p-2 bg-white/5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-red-500 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
+                {...register("password")}
               />
             </div>
           </div>
 
           <div>
             <div className="flex items-center justify-between">
-              <label
-                for="password"
-                className="block text-sm font-medium leading-6 text-black"
-              >
+              <label className="block text-sm font-medium leading-6 text-black">
                 Confirma el Password
               </label>
               <div className="text-sm"></div>
             </div>
             <div className="mt-2">
               <input
-                id="password"
-                name="password"
+                id="confirmpassword"
+                name="confirmPassword"
                 type="password"
-                autocomplete="current-password"
                 required
-                className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-red-500 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-gray-900 p-2 shadow-sm ring-1 ring-inset ring-red-500 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
+                {...register("confirmPassword")}
               />
             </div>
           </div>
