@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { useAuth } from "@/context/AuthContext";
 import { FaYoutube } from "react-icons/fa";
 
 const LoginForm = () => {
@@ -12,6 +13,7 @@ const LoginForm = () => {
     formState: { errors }
   } = useForm();
 
+  const { setAuthData } = useAuth();
   const router = useRouter();
 
   console.log("LOS ERRORES: ", errors);
@@ -34,6 +36,7 @@ const LoginForm = () => {
       console.log("LA RESPUESTA DEL SERVER: ", responseData);
 
       if (responseData.access === true) {
+        setAuthData(responseData);
         router.push("/history");
       } else {
         alert("Acceso denegado");
