@@ -19,27 +19,25 @@ const VideoDetail = ({ id, link, title, likes, unlikes, comments }) => {
 
   const onSubmit = async (data, event) => {
     event.preventDefault();
-    
+
     const comment = data.comment;
     const videoId = id;
     const idUser = userId;
     const userName = name;
+    const URL = "http://localhost:3001/ivan-trejo-challenge/comment";
 
-    const postCommentData = await fetch(
-      "http://localhost:3001/ivan-trejo-challenge/comment",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          comment: comment,
-          video_id: videoId,
-          user_id: idUser,
-          name_user: userName
-        })
-      }
-    );
+    const postCommentData = await fetch(URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        comment: comment,
+        video_id: videoId,
+        user_id: idUser,
+        name_user: userName
+      })
+    });
 
     if (postCommentData?.error) {
       console.log(postCommentData.error);
@@ -48,6 +46,12 @@ const VideoDetail = ({ id, link, title, likes, unlikes, comments }) => {
       reset();
     }
   };
+
+
+
+  //Manejo de likes y unlikes:
+
+
   return (
     <div className="w-3/4 h-fit border inline-flex border-gray-300 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 lg:max-w-7xl mx-auto px-4 sm:px-2 lg:px-8 my-12 justify-center">
       <div className="w-full h-fit p-2">
@@ -95,17 +99,17 @@ const VideoDetail = ({ id, link, title, likes, unlikes, comments }) => {
             </div>
           </form>
 
-          <div className="flex px-4 py-12 justify-between">
+          <div className="flex px-4 py-12 w-1/4 justify-between">
             <div className="flex space-x-2 gap-5">
               <div className="flex space-x-1 items-center gap-1">
-                <button className="w-8 h-8 hover:transform">
+                <button className="w-14 h-14 hover:transform p-2 border-2 border-black rounded-full transition duration-200 hover:scale-105 hover:bg-red-500">
                   <GrLike className="w-full h-full" />
                 </button>
 
                 <span className="text-lg font-medium">{likes}</span>
               </div>
-              <div className="flex space-x-1 items-center w-14 gap-1">
-                <button className="w-8 h-8">
+              <div className="flex space-x-1 items-center gap-1">
+                <button className="w-14 h-14 hover:transform p-2 border-2 border-black rounded-full transition duration-200 hover:scale-105 hover:bg-red-500">
                   <GrDislike className="w-full h-full" />
                 </button>
 
