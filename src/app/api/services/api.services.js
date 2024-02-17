@@ -6,8 +6,15 @@ export const getVideos = async () => {
   };
 
   export const getPopularVideos = async () => {
-    const URL = "http://localhost:3001/ivan-trejo-challenge/video/popular";
+    const URL = "http://localhost:3001/ivan-trejo-challenge/video";
     const apiVideos = await fetch(URL);
+    const data = await apiVideos.json();
+    return data;
+  };
+
+  export const getUserVideos = async (id) => {
+    const URL = `http://localhost:3001/ivan-trejo-challenge/uservideo/${id}`;
+    const apiVideos = await fetch(URL, { next: { revalidate: 30 } });
     const data = await apiVideos.json();
     return data;
   };
