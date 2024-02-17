@@ -2,13 +2,8 @@
 import { useState, useEffect } from "react";
 import { VideoCard } from "./components/VideoCard";
 import { Pagination } from "./components/Pagination";
+import { getVideos } from "./api/services/api.services";
 
-const getVideos = async () => {
-  const URL = "http://localhost:3001/ivan-trejo-challenge/video";
-  const apiVideos = await fetch(URL);
-  const data = await apiVideos.json();
-  return data;
-};
 
 export default function Home() {
   const [videos, setVideos] = useState([]);

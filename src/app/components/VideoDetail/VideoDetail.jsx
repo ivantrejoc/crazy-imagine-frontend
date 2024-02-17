@@ -3,6 +3,19 @@ import { GrLike } from "react-icons/gr";
 import { GrDislike } from "react-icons/gr";
 import { Comments } from "../Comments";
 import { useForm } from "react-hook-form";
+import { likesHandler } from "@/app/api/services/api.services";
+import { unlikesHandler } from "@/app/api/services/api.services";
+
+
+//Manejo de likes y unlikes:
+const postLike = async (id, userId) => {
+  return await likesHandler(id, userId);
+}
+
+const postUnlike = async (id, userId) => {
+  return await unlikesHandler(id, userId)
+}
+ 
 
 const VideoDetail = ({ id, link, title, likes, unlikes, comments }) => {
   const name = "Daniela Quintero";
@@ -47,10 +60,24 @@ const VideoDetail = ({ id, link, title, likes, unlikes, comments }) => {
     }
   };
 
-
-
-  //Manejo de likes y unlikes:
-
+  
+  // const unlikesHandler = async (id, userId) => {
+  //   const URL = "http://localhost:3001/ivan-trejo-challenge/unlike";
+  //   const postUnlike = await fetch(URL, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify({
+  //       video_id: id,
+  //       user_id: userId
+  //     })
+  //   });
+  //   if (postUnlike?.error) {
+  //     console.log(postCommentData.error);
+  //     alert(errors);
+  //   }
+  // };
 
   return (
     <div className="w-3/4 h-fit border inline-flex border-gray-300 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 lg:max-w-7xl mx-auto px-4 sm:px-2 lg:px-8 my-12 justify-center">
@@ -102,18 +129,18 @@ const VideoDetail = ({ id, link, title, likes, unlikes, comments }) => {
           <div className="flex px-4 py-12 w-1/4 justify-between">
             <div className="flex space-x-2 gap-5">
               <div className="flex space-x-1 items-center gap-1">
-                <button className="w-14 h-14 hover:transform p-2 border-2 border-black rounded-full transition duration-200 hover:scale-105 hover:bg-red-500">
+                <button className="w-14 h-14 hover:transform p-2 border-2 border-black rounded-full transition duration-200 hover:scale-105 hover:bg-red-500" onClick={() => postLike(id, userId)}>
                   <GrLike className="w-full h-full" />
                 </button>
 
-                <span className="text-lg font-medium">{likes}</span>
+                <span className="text-2xl font-medium">{likes}</span>
               </div>
               <div className="flex space-x-1 items-center gap-1">
-                <button className="w-14 h-14 hover:transform p-2 border-2 border-black rounded-full transition duration-200 hover:scale-105 hover:bg-red-500">
+                <button className="w-14 h-14 hover:transform p-2 border-2 border-black rounded-full transition duration-200 hover:scale-105 hover:bg-red-500" onClick={() => postUnlike(id, userId)}>
                   <GrDislike className="w-full h-full" />
                 </button>
 
-                <span className="text-lg font-medium">{unlikes}</span>
+                <span className="text-2xl font-medium">{unlikes}</span>
               </div>
             </div>
           </div>

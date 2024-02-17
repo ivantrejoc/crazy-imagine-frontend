@@ -23,7 +23,7 @@ const VideoCard = ({ id, title, link, likes, unlikes }) => {
         </div>
 
         <div className="flex p-4 justify-between">
-          <div className=" bg-blue-300 flex space-x-2 gap-3">
+          <div className="flex space-x-2 gap-3">
             <div className="flex space-x-1 items-center">
               <LiaCommentSolid className="w-6 h-6" />
               <span>no hay</span>

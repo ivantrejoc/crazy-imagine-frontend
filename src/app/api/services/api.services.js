@@ -14,3 +14,39 @@ export const getVideos = async () => {
   };
   
 
+
+  export const likesHandler = async (id, userId) => {
+    const URL = "http://localhost:3001/ivan-trejo-challenge/like";
+    const postLike = await fetch(URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        video_id: id,
+        user_id: userId
+      })
+    });
+    if (postLike?.error) {
+      console.log(postCommentData.error);
+      alert(errors);
+    }
+  };
+
+  export const unlikesHandler = async (id, userId) => {
+    const URL = "http://localhost:3001/ivan-trejo-challenge/unlike";
+    const postUnlike = await fetch(URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        video_id: id,
+        user_id: userId
+      })
+    });
+    if (postUnlike?.error) {
+      console.log(postCommentData.error);
+      alert(errors);
+    }
+  };
