@@ -5,9 +5,13 @@ const RegisterForm = () => {
   const {
     register,
     handleSubmit,
+    watch,
     reset,
     formState: { errors }
   } = useForm();
+
+  console.log("LOS ERRORES: ", errors);
+  
 
   const onSubmit = async (data, event) => {
     event.preventDefault();
@@ -29,7 +33,7 @@ const RegisterForm = () => {
     if (postUser?.error) {
       console.log(postUser.error);
       alert(errors);
-    }else{
+    } else {
       reset();
     }
   };
@@ -54,10 +58,13 @@ const RegisterForm = () => {
                 id="name"
                 name="name"
                 type="text"
-                required
                 className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-gray-900 p-2 shadow-sm ring-1 ring-inset ring-red-500 focus:ring-2 focus:ring-inset focus:ring-balck sm:text-sm sm:leading-6"
-                {...register("name")}
+                {...register("name", {
+                  required: true,
+                  pattern: /^[ a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/
+                })}
               />
+              {errors.name && <span>Nombre Requerido, solo acepta letras</span>}
             </div>
           </div>
           <div>
@@ -69,10 +76,14 @@ const RegisterForm = () => {
                 id="email"
                 name="email"
                 type="email"
-                required
                 className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-gray-900 p-2 shadow-sm ring-1 ring-inset ring-red-500 focus:ring-2 focus:ring-inset focus:ring-balck sm:text-sm sm:leading-6"
-                {...register("email")}
+                {...register("email", {
+                  required: true,
+                  pattern:
+                    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/
+                })}
               />
+              {errors.email && <span>Email Requerido, formato hola@mail.com</span>}
             </div>
           </div>
 
@@ -88,10 +99,15 @@ const RegisterForm = () => {
                 id="password"
                 name="password"
                 type="password"
-                required
                 className="block w-full rounded-md border-0 p-2 bg-white/5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-red-500 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
-                {...register("password")}
+                {...register("password", {
+                  required: true,
+                  pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/,
+                  min: 8,
+                  max: 20
+                })}
               />
+              {errors.password && <span>Password Requerido. Min 8, max 20, mayúsculas, minúsculas y números</span>}
             </div>
           </div>
 
@@ -107,10 +123,22 @@ const RegisterForm = () => {
                 id="confirmpassword"
                 name="confirmPassword"
                 type="password"
-                required
                 className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-gray-900 p-2 shadow-sm ring-1 ring-inset ring-red-500 focus:ring-2 focus:ring-inset focus:ring-black sm:text-sm sm:leading-6"
-                {...register("confirmPassword")}
+                {...register("confirmPassword", {
+                  required: true,
+                  pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/,
+                  min: 8,
+                  max: 20, 
+                  validate: (value) =>{
+                    if (value === watch("password")) {
+                      return true;
+                    } else{
+                      return ("Passwords son diferentes");
+                    }
+                  },
+                })}
               />
+              {errors.confirmPassword && <span>Password Requerido, Passwords deben ser iguales</span>}
             </div>
           </div>
 
