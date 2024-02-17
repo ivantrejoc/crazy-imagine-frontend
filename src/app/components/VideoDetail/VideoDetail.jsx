@@ -1,9 +1,53 @@
+"use client";
 import { GrLike } from "react-icons/gr";
 import { GrDislike } from "react-icons/gr";
 import { Comments } from "../Comments";
+import { useForm } from "react-hook-form";
 
 const VideoDetail = ({ id, link, title, likes, unlikes, comments }) => {
-  console.log("DATOS DE COMMENTS EN VideDetail: ", comments);
+  const name = "Daniela Quintero";
+  const userId = "35b40319-e9ef-49c1-914a-9d5ae578fdae";
+
+  //MANEJO DE COMMENTS:
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors }
+  } = useForm();
+
+  const onSubmit = async (data, event) => {
+    event.preventDefault();
+    
+    const comment = data.comment;
+    const videoId = id;
+    const idUser = userId;
+    const userName = name;
+
+    const postCommentData = await fetch(
+      "http://localhost:3001/ivan-trejo-challenge/comment",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          comment: comment,
+          video_id: videoId,
+          user_id: idUser,
+          name_user: userName
+        })
+      }
+    );
+
+    if (postCommentData?.error) {
+      console.log(postCommentData.error);
+      alert(errors);
+    } else {
+      reset();
+    }
+  };
   return (
     <div className="w-3/4 h-fit border inline-flex border-gray-300 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 lg:max-w-7xl mx-auto px-4 sm:px-2 lg:px-8 my-12 justify-center">
       <div className="w-full h-fit p-2">
@@ -21,7 +65,10 @@ const VideoDetail = ({ id, link, title, likes, unlikes, comments }) => {
         </div>
 
         <div className="flex items-start justify-start mt-12 mb-1 w-full">
-          <form className="w-1/3 rounded-lg px-4 pt-2">
+          <form
+            className="w-1/3 rounded-lg px-4 pt-2"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <div className="flex flex-wrap -mx-3 mb-6">
               <h2 className="px-4 pt-3 pb-2 text-gray-800 text-md font-semibold">
                 Deja un comentario
@@ -32,6 +79,7 @@ const VideoDetail = ({ id, link, title, likes, unlikes, comments }) => {
                   name="body"
                   placeholder="Escribe tu comentario..."
                   required
+                  {...register("comment")}
                 ></textarea>
               </div>
               <div className="w-full md:w-full flex items-start px-3">

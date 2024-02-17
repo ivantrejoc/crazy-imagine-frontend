@@ -12,8 +12,6 @@ const VideoById = async (id) => {
   
   const cleanId = id.params.id;
   const video = await getVideoById(cleanId);
-
-  console.log("EL VIDEO COMPLETO: ", video);
   
    
   return (
