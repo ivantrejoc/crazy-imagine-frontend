@@ -7,7 +7,7 @@ const NavBar = () => {
         <FaYoutube className="w-12 h-12" />
         <h3 className="text-2xl font-semibold pl-3 pt-2">Youtube</h3>
       </div>
-      <div className="container flex items-center justify-center p-6 gap-3 mx-auto text-gray-600 capitalize dark:text-gray-300">
+      <div className="container flex items-center justify-center py-6 px-0 gap-3  text-gray-600 capitalize dark:text-gray-300">
         <a
           href="/"
           className="focus:outline-none text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-600 dark:focus:ring-red-900"
@@ -34,6 +34,13 @@ const NavBar = () => {
           className="focus:outline-none text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-600 dark:focus:ring-red-900"
         >
           Inicia Sesión
+        </a>
+
+        <a
+          href="/register"
+          className="focus:outline-none text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-600 dark:focus:ring-red-900"
+        >
+          Registro
         </a>
       </div>
     </nav>
