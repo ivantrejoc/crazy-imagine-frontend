@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { FaYoutube } from "react-icons/fa";
 
@@ -11,8 +12,36 @@ const LoginForm = () => {
     formState: { errors }
   } = useForm();
 
+  const router = useRouter();
+
   console.log("LOS ERRORES: ", errors);
-  const onSubmit = (data) => console.log(data);
+  // const onSubmit = (data) => console.log(data);
+
+
+  //login
+  const onSubmit = async (data, event) => {
+    event.preventDefault();
+
+    const { email, password } = data;
+    const URL = `http://localhost:3001/ivan-trejo-challenge/user/login/?email=${encodeURIComponent(
+      email
+    )}&password=${encodeURIComponent(password)}`;
+
+    try {
+      const response = await fetch(URL);
+
+      const responseData = await response.json();
+      console.log("LA RESPUESTA DEL SERVER: ", responseData);
+
+      if (responseData.access === true) {
+        router.push("/history");
+      } else {
+        alert("Acceso denegado");
+      }
+    } catch (error) {
+      console.error("Error al enviar la solicitud:", error);
+    }
+  };
 
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
@@ -64,7 +93,12 @@ const LoginForm = () => {
                   max: 20
                 })}
               />
-              {errors.password && <span>Password Requerido. Min 8, max 20, mayúsculas, minúsculas y números</span>}
+              {errors.password && (
+                <span>
+                  Password Requerido. Min 8, max 20, mayúsculas, minúsculas y
+                  números
+                </span>
+              )}
             </div>
           </div>
 
