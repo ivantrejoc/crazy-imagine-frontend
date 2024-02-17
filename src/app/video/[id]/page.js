@@ -9,9 +9,13 @@ const getVideoById = async (id) => {
 };
 
 const VideoById = async (id) => {
+  
   const cleanId = id.params.id;
   const video = await getVideoById(cleanId);
 
+  console.log("EL VIDEO COMPLETO: ", video);
+  
+   
   return (
     <section className="flex items-center pt-8">
       <VideoDetail

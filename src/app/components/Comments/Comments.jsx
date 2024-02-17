@@ -4,14 +4,14 @@ const Comments = ({name, comment}) => {
   return (
     
         
-      <div className="block">
+      <div className="block mb-2">
         <div className="bg-gray-200 w-auto rounded-md px-2 pb-2">
           <div className="font-medium">
-            <a href="#" className="hover:underline text-sm">
-              <small>{name}</small>
-            </a>
+            
+              <span className="text-xs">{name}</span>
+            
           </div>
-          <div className="text-xs">
+          <div className="text-sm">
             {comment}
           </div>
         </div>

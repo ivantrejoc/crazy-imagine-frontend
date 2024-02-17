@@ -9,7 +9,7 @@ const VideoDetail = ({ id, link, title, likes, unlikes, comments }) => {
       <div className="w-full h-fit p-2">
         <div>
           <iframe
-            className="w-full h-96 max-h-90 mt-2"
+            className="w-full h-[500px] mt-2"
             src={link}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
