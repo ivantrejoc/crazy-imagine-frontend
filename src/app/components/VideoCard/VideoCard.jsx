@@ -1,8 +1,24 @@
 import { LiaCommentSolid } from "react-icons/lia";
 import { GrLike } from "react-icons/gr";
 import { GrDislike } from "react-icons/gr";
+import { likesHandler } from "@/app/api/services/api.services";
+import { unlikesHandler } from "@/app/api/services/api.services";
+
+//Manejo de likes y unlikes:
+const postLike = async (id, userId) => {
+  return await likesHandler(id, userId);
+}
+
+const postUnlike = async (id, userId) => {
+  return await unlikesHandler(id, userId)
+}
 
 const VideoCard = ({ id, title, link, likes, unlikes }) => {
+  const name = "Daniela Quintero";
+  const userId = "35b40319-e9ef-49c1-914a-9d5ae578fdae";
+
+
+
   return (
     <div className=" w-96 flex justify-center items-center">
       <div className="max-w-lg container bg-white rounded-xl shadow-lg transition duration-200 hover:scale-105 hover:shadow-2xl">
@@ -26,18 +42,18 @@ const VideoCard = ({ id, title, link, likes, unlikes }) => {
           <div className="flex space-x-2 gap-3">
             <div className="flex space-x-1 items-center">
               <LiaCommentSolid className="w-6 h-6" />
-              <span>no hay</span>
+              <span>traer cant</span>
             </div>
             <div className="flex space-x-1 items-center">
               <button className="w-6 h-6 hover:transform p-1 border border-black rounded-full transition duration-200 hover:scale-105 hover:bg-red-500">
-                <GrLike className="w-full h-full" />
+                <GrLike className="w-full h-full" onClick={() => postLike(id, userId)}/>
               </button>
 
               <span className="text-lg font-medium">{likes}</span>
             </div>
             <div className="flex space-x-1 items-center">
               <button className="w-6 h-6 hover:transform p-1 border border-black rounded-full transition duration-200 hover:scale-105 hover:bg-red-500">
-                <GrDislike className="w-full h-full" />
+                <GrDislike className="w-full h-full" onClick={() => postUnlike(id, userId)} />
               </button>
 
               <span className="text-lg font-medium">{unlikes}</span>

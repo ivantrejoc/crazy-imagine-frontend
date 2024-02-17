@@ -59,25 +59,8 @@ const VideoDetail = ({ id, link, title, likes, unlikes, comments }) => {
       reset();
     }
   };
-
   
-  // const unlikesHandler = async (id, userId) => {
-  //   const URL = "http://localhost:3001/ivan-trejo-challenge/unlike";
-  //   const postUnlike = await fetch(URL, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify({
-  //       video_id: id,
-  //       user_id: userId
-  //     })
-  //   });
-  //   if (postUnlike?.error) {
-  //     console.log(postCommentData.error);
-  //     alert(errors);
-  //   }
-  // };
+
 
   return (
     <div className="w-3/4 h-fit border inline-flex border-gray-300 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 lg:max-w-7xl mx-auto px-4 sm:px-2 lg:px-8 my-12 justify-center">
