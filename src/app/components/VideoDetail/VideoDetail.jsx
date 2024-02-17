@@ -19,7 +19,7 @@ const postUnlike = async (id, userId) => {
 
 const VideoDetail = ({ id, link, title, likes, unlikes, comments }) => {
   const name = "Daniela Quintero";
-  const userId = "35b40319-e9ef-49c1-914a-9d5ae578fdae";
+  const userId = "5bc83c19-ce6a-4eeb-958f-95480e8c9ff4";
 
   //MANEJO DE COMMENTS:
   const {

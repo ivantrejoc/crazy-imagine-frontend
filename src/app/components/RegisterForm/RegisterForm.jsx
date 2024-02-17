@@ -36,6 +36,7 @@ const RegisterForm = () => {
       console.log(postUser.error);
       alert(errors);
     } else {
+      alert("USUARIO CREADO")
       reset();
     }
   };
